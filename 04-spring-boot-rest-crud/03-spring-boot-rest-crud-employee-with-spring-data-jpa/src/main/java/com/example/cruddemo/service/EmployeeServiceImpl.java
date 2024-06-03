@@ -1,6 +1,5 @@
 package com.example.cruddemo.service;
 
-import com.example.cruddemo.dao.EmployeeDAO;
 import com.example.cruddemo.dao.EmployeeRepository;
 import com.example.cruddemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee theEmployee = null ;
         if(result.isPresent()){
             theEmployee = result.get();
+        }else{
+            throw new RuntimeException("Did not find employee if - " + theId);
         }
         return theEmployee;
     }
